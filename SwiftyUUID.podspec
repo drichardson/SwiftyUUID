@@ -16,16 +16,24 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SwiftyUUID"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Native Swift UUIDs."
 
   s.description  = <<-DESC
-                   A longer description of SwiftyUUID in Markdown format.
+SwiftyUUID
+==========
+Native Swift UUIDs. Generates [RFC 4122](https://www.ietf.org/rfc/rfc4122.txt), version 4 randomly generated UUIDs.
 
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
+Example
+-------
+
+    let uuid = SwiftyJSON.UUID()
+    let uuidStr = uuid.CanonicalString()
+    
+
+Why not use NSUUID?
+------------------
+Getting the raw UUID bytes out of NSUUID is painful and error prone.
                    DESC
 
   s.homepage     = "https://github.com/drichardson/SwiftyUUID"
@@ -78,7 +86,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/drichardson/SwiftyUUID.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/drichardson/SwiftyUUID.git", :tag => "0.0.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
