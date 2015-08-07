@@ -10,8 +10,9 @@
 		910CAC2C1B75461200D86E7F /* SwiftyUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 910CAC2B1B75461200D86E7F /* SwiftyUUID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		910CAC321B75461200D86E7F /* SwiftyUUID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 910CAC261B75461200D86E7F /* SwiftyUUID.framework */; };
 		910CAC391B75461200D86E7F /* SwiftyUUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CAC381B75461200D86E7F /* SwiftyUUIDTests.swift */; };
-		910CAC431B75461C00D86E7F /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CAC421B75461C00D86E7F /* UUID.swift */; };
+		910CAC431B75461C00D86E7F /* Version4UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CAC421B75461C00D86E7F /* Version4UUID.swift */; };
 		910CAC451B75462800D86E7F /* UUIDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CAC441B75462800D86E7F /* UUIDTests.swift */; };
+		910CAC471B7547B100D86E7F /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CAC461B7547B100D86E7F /* UUID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +32,9 @@
 		910CAC311B75461200D86E7F /* SwiftyUUIDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyUUIDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		910CAC371B75461200D86E7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		910CAC381B75461200D86E7F /* SwiftyUUIDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUUIDTests.swift; sourceTree = "<group>"; };
-		910CAC421B75461C00D86E7F /* UUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
+		910CAC421B75461C00D86E7F /* Version4UUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version4UUID.swift; sourceTree = "<group>"; };
 		910CAC441B75462800D86E7F /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
+		910CAC461B7547B100D86E7F /* UUID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +78,10 @@
 			isa = PBXGroup;
 			children = (
 				910CAC2B1B75461200D86E7F /* SwiftyUUID.h */,
-				910CAC291B75461200D86E7F /* Supporting Files */,
-				910CAC421B75461C00D86E7F /* UUID.swift */,
+				910CAC461B7547B100D86E7F /* UUID.swift */,
 				910CAC441B75462800D86E7F /* UUIDTests.swift */,
+				910CAC421B75461C00D86E7F /* Version4UUID.swift */,
+				910CAC291B75461200D86E7F /* Supporting Files */,
 			);
 			path = SwiftyUUID;
 			sourceTree = "<group>";
@@ -214,7 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				910CAC431B75461C00D86E7F /* UUID.swift in Sources */,
+				910CAC471B7547B100D86E7F /* UUID.swift in Sources */,
+				910CAC431B75461C00D86E7F /* Version4UUID.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

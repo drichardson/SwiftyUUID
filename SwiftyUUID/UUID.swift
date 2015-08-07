@@ -6,28 +6,41 @@
 //
 //
 
-public typealias UUIDBytes = [UInt8]
-
-// Generate a RFC 4122, version 4 UUID as a byte slice.
-public func Version4UUID() -> UUIDBytes {
-    var uuid : [UInt8] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+// Wraps UUID bytes, providing methods for converting to/from string representations.
+public struct UUID {
+    let bytes : UUIDBytes
     
-    uuid.withUnsafeMutableBufferPointer { (inout p : UnsafeMutableBufferPointer<UInt8>) -> () in
-        arc4random_buf(p.baseAddress, 16)
+    // Create a Version 4 UUID.
+    public init() {
+        bytes = Version4UUID()
     }
     
-    // Set the version and variant fields as described in RFC4122 sections
-    // 4.1.1 and 4.1.3.
-    // https://tools.ietf.org/html/rfc4122
-    
-    markRFC4122_INTERNAL(&uuid)
-    
-    return uuid
+    // Use pre-generated UUIDBytes. This is intended for testing and you probably
+    // should use init() instead.
+    public init(bytes : UUIDBytes) {
+        assert(bytes.count == 16)
+        self.bytes = bytes
+    }
 }
 
-// bytes must be length 16. This is public for unit testing purposes but should
-// not be used directly.
-public func markRFC4122_INTERNAL(inout uuid : UUIDBytes) {
-    uuid[6] = (uuid[6] & 0b00001111) | 0b01000000 // RFC 4122 version
-    uuid[8] = (uuid[8] & 0b00111111) | 0b10000000 // RFC 4122 variant
+extension UUID {
+    // Get a string representation of the UUID of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx,
+    // where x is a hex digit.
+    public func CanonicalString() -> String {
+        let args : [CVarArgType] = [
+            bytes[0], bytes[1], bytes[2], bytes[3],
+            bytes[4], bytes[5], bytes[6], bytes[7],
+            bytes[8], bytes[9], bytes[10], bytes[11],
+            bytes[12], bytes[13], bytes[14], bytes[15]
+        ]
+        
+        return String(format: "%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x", arguments: args)
+    }
+}
+
+extension UUID : Equatable {
+}
+
+public func ==(lhs: UUID, rhs: UUID) -> Bool {
+    return lhs.bytes == rhs.bytes
 }

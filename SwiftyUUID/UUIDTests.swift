@@ -11,11 +11,16 @@ import SwiftyUUID
 
 class UUIDTest: XCTestCase {
     
-    func testUUIDDifference() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-        let uuid1 = SwiftyUUID.Version4UUID()
-        let uuid2 = SwiftyUUID.Version4UUID()
+    func testUUIDEquality() {
+        let uuidBytes1 = SwiftyUUID.Version4UUID()
+        let uuidBytes2 = SwiftyUUID.Version4UUID()
+        XCTAssertNotEqual(uuidBytes1, uuidBytes2)
+        
+        let uuid1 = SwiftyUUID.UUID()
+        let uuid2 = SwiftyUUID.UUID()
+        let uuid1Copy = uuid1
+        XCTAssertNotEqual(uuid1, uuid2)
+        XCTAssertEqual(uuid1, uuid1Copy)
     }
     
     func testUUIDVersion4() {
@@ -58,7 +63,18 @@ class UUIDTest: XCTestCase {
         XCTAssertEqual((uuid_allZeros[6] & 0b11110000) >> 4, 0b0100)
         XCTAssertEqual((uuid_allOnes[8] & 0b11000000) >> 6, 0b10)
         XCTAssertEqual((uuid_allZeros[8] & 0b11000000) >> 6, 0b10)
+    }
+    
+    func testCanonicalStrings() {
+        var uuid_allOnes : [UInt8] = [0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff]
+        var uuid_allZeros : [UInt8] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         
+        // Note, I'm actually using non-conformant version 4 UUIDs in this test (version and 
+        // variant are not set correctly).
+        let uuidOnes = SwiftyUUID.UUID(bytes: uuid_allOnes)
+        let uuidZeros = SwiftyUUID.UUID(bytes: uuid_allZeros)
+        XCTAssertEqual(uuidOnes.CanonicalString(),  "ffffffff-ffff-ffff-ffff-ffffffffffff")
+        XCTAssertEqual(uuidZeros.CanonicalString(), "00000000-0000-0000-0000-000000000000")
     }
     
     func testPerformanceVersion4UUID() {
@@ -69,4 +85,12 @@ class UUIDTest: XCTestCase {
         }
     }
     
+    func testPerformanceCanonicalStrings() {
+        let uuid = SwiftyUUID.UUID()
+        self.measureBlock() {
+            for _ in 1...1000 {
+                uuid.CanonicalString()
+            }
+        }
+    }
 }
