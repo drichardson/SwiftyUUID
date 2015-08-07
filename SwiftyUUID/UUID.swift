@@ -2,7 +2,7 @@
 //  UUID.swift
 //  SwiftyUUID
 //
-//  Created by Douglas Richardson on 8/7/15.
+//  Created by Doug Richardson on 8/7/15.
 //
 //
 
