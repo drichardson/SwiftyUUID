@@ -28,6 +28,3 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
-
-## Why not use NSUUID?
-Getting the raw UUID bytes out of NSUUID is painful and error prone.
