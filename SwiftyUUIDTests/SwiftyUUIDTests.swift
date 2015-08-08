@@ -79,7 +79,7 @@ class SwiftyUUIDTests: XCTestCase {
     
     func testPerformanceVersion4UUID() {
         self.measureBlock() {
-            for _ in 1...1000 {
+            for _ in 1...10000 {
                 SwiftyUUID.Version4UUID()
             }
         }

@@ -6,17 +6,26 @@
 //
 //
 
-// Wraps UUID bytes, providing methods for converting to/from string representations.
+/// An array of UUID bytes. When returned from functions you can assume it is a valid
+/// 16 byte UUID. If creating your own, ensure it is 16 bytes long.
+public typealias UUIDBytes = [UInt8]
+
+/**
+    Wrapper for UUIDBytes, providing immutability and support for extensions.
+*/
 public struct UUID {
     let bytes : UUIDBytes
     
-    // Create a Version 4 UUID.
+    /// Create a randomly generated, version 4 UUID.
     public init() {
         bytes = Version4UUID()
     }
     
-    // Use pre-generated UUIDBytes. This is intended for testing and you probably
-    // should use init() instead.
+    /**
+        Wrap UUIDBytes.
+    
+        :params: bytes The UUID bytes to use. Must be 16 bytes long.
+    */
     public init(bytes : UUIDBytes) {
         assert(bytes.count == 16)
         self.bytes = bytes
@@ -24,8 +33,13 @@ public struct UUID {
 }
 
 extension UUID {
-    // Get a string representation of the UUID of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx,
-    // where x is a hex digit.
+    /**
+        Get a string representation of the UUID of the form
+        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, where x is a lowercase
+        hex digit.
+    
+        :returns: A string representation of the UUID.
+    */
     public func CanonicalString() -> String {
         let args : [CVarArgType] = [
             bytes[0], bytes[1], bytes[2], bytes[3],
@@ -41,6 +55,7 @@ extension UUID {
 extension UUID : Equatable {
 }
 
+/// Compare two UUIDs for equality. Two UUIDs are equal if their underlying bytes are equal.
 public func ==(lhs: UUID, rhs: UUID) -> Bool {
     return lhs.bytes == rhs.bytes
 }
