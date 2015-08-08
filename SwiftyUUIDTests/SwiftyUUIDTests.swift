@@ -68,13 +68,16 @@ class SwiftyUUIDTests: XCTestCase {
     func testCanonicalStrings() {
         var uuid_allOnes : [UInt8] = [0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff]
         var uuid_allZeros : [UInt8] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        var uuid_bookendOnes : [UInt8] = [0x10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x01]
         
         // Note, I'm actually using non-conformant version 4 UUIDs in this test (version and
         // variant are not set correctly).
         let uuidOnes = SwiftyUUID.UUID(bytes: uuid_allOnes)
         let uuidZeros = SwiftyUUID.UUID(bytes: uuid_allZeros)
+        let uuidBookendOnes = SwiftyUUID.UUID(bytes: uuid_bookendOnes)
         XCTAssertEqual(uuidOnes.CanonicalString(),  "ffffffff-ffff-ffff-ffff-ffffffffffff")
         XCTAssertEqual(uuidZeros.CanonicalString(), "00000000-0000-0000-0000-000000000000")
+        XCTAssertEqual(uuidBookendOnes.CanonicalString(), "10000000-0000-0000-0000-000000000001")
     }
     
     func testPerformanceVersion4UUID() {
