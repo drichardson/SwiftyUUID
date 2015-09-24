@@ -38,7 +38,7 @@ extension UUID {
         xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, where x is a lowercase
         hex digit.
     
-        :returns: A string representation of the UUID.
+        - returns: A string representation of the UUID.
     */
     public func CanonicalString() -> String {
         let args : [CVarArgType] = [

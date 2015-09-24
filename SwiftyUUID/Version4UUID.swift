@@ -9,7 +9,7 @@
 /**
     Generate a new RFC 4122, version 4 (random) UUID.
     
-    :returns: The new, randomly generated UUID.
+    - returns: The new, randomly generated UUID.
 */
 public func Version4UUID() -> UUIDBytes {
     var uuid : [UInt8] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]

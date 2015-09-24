@@ -66,9 +66,9 @@ class SwiftyUUIDTests: XCTestCase {
     }
     
     func testCanonicalStrings() {
-        var uuid_allOnes : [UInt8] = [0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff]
-        var uuid_allZeros : [UInt8] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        var uuid_bookendOnes : [UInt8] = [0x10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x01]
+        let uuid_allOnes : [UInt8] = [0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff]
+        let uuid_allZeros : [UInt8] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        let uuid_bookendOnes : [UInt8] = [0x10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x01]
         
         // Note, I'm actually using non-conformant version 4 UUIDs in this test (version and
         // variant are not set correctly).
