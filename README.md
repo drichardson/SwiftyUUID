@@ -23,7 +23,7 @@ To integrate SwiftyUUID into your Xcode project using CocoaPods, specify it in y
 
 ```ruby
 use_frameworks!
-pod 'SwiftyUUID', '~> 0.9'
+pod 'SwiftyUUID', '~> 1.0'
 ```
 
 Then, run the following command:
