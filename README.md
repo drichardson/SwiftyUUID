@@ -5,7 +5,7 @@ Native Swift UUIDs. Generates [RFC 4122](https://www.ietf.org/rfc/rfc4122.txt) v
 
     import SwiftyUUID
     ...
-    let uuid = SwiftyJSON.UUID()
+    let uuid = SwiftyUUID.UUID()
     let uuidString = uuid.CanonicalString()
     let uuidBytes = uuid.bytes
     
