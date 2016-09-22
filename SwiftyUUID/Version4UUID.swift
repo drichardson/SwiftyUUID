@@ -14,7 +14,7 @@
 public func Version4UUID() -> UUIDBytes {
     var uuid : [UInt8] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     
-    uuid.withUnsafeMutableBufferPointer { (inout p : UnsafeMutableBufferPointer<UInt8>) -> () in
+    uuid.withUnsafeMutableBufferPointer { (p : inout UnsafeMutableBufferPointer<UInt8>) -> () in
         arc4random_buf(p.baseAddress, 16)
     }
     
@@ -33,7 +33,7 @@ public func Version4UUID() -> UUIDBytes {
 
     :params: uuid The 16 byte uuid to mark.
 */
-public func markRFC4122_INTERNAL(inout uuid : UUIDBytes) {
+public func markRFC4122_INTERNAL(_ uuid : inout UUIDBytes) {
     uuid[6] = (uuid[6] & 0b00001111) | 0b01000000 // RFC 4122 version
     uuid[8] = (uuid[8] & 0b00111111) | 0b10000000 // RFC 4122 variant
 }
